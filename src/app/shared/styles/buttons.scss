@@ -1,0 +1,149 @@
+@import "./vars.scss";
+
+.button1 {
+  z-index: 1; //Я ДОБАВИЛ ДЛЯ idisabled
+  user-select: none;
+  height: 40px;
+  @include main_c;
+  border: 1px solid $main_color !important;
+  cursor: pointer;
+  border-radius: $borr;
+  transition: 0.2s;
+  padding: 0 10px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+
+  &.m {
+    margin: 0 5px;
+  }
+
+  // background-color: white;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  &:hover[disabled=""] {
+    background-color: unset;
+  }
+
+  &[disabled=""] {
+    color: gray !important;
+    border-color: gray !important;
+    opacity: 0.5;
+    cursor: default !important;
+  }
+}
+
+.button1:not(.not) {
+  height: 26px;
+  padding: 0;
+
+  app-icons {
+    height: 22px;
+    width: 24px;
+  }
+}
+
+// делает иконку стандартной для top_line, лучше испозовать в связке с not
+.big_icon_button {
+  padding: 0;
+  height: 30px;
+  width: 30px;
+  position: relative;
+
+  app-icons {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+/// шаблон кнопки
+.button2 {
+  color: black;
+  background-color: white;
+  border: 2px solid $second_color !important;
+}
+.button3 {
+  @include main_bgc;
+  border: 2px solid $main_color !important;
+  color: #ececec !important;
+  mat-icon {
+    color: white !important;
+  }
+}
+.like_button {
+  user-select: none;
+  transition: 0.2s;
+  cursor: pointer;
+  &:not(.disabled, .disabled2, [disabled]) {
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $button_shadow;
+    }
+
+    &:active {
+      box-shadow: none;
+      transform: translateY(2px);
+    }
+  }
+}
+.checked {
+  transform: translateY(-2px);
+  box-shadow: $button_shadow;
+}
+.button2,
+.button3,
+.button4 {
+  z-index: 1; //Я ДОБАВИЛ ДЛЯ idisabled
+  height: 40px;
+  min-width: 48px;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 0 10px;
+  transition: 0.2s;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  @extend .like_button;
+  &[disabled] {
+    opacity: 0.35;
+  }
+}
+.button2[disabled=""] {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: default;
+}
+.button1,
+.button2,
+.button3 {
+  margin: 0 0 10px 0;
+  // margin: 0 10px 0 0;
+  // &:last-of-type {
+  //   margin: 0;
+  // }
+  &.m {
+    margin: 0 10px 0 0;
+  }
+}
+.button {
+  &:not(.disabled, [disabled]) {
+    &:hover {
+      transform: translateY(-2px);
+    }
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+}
+.button3r {
+  @extend .button3;
+}
+.button2r {
+  @extend .button2;
+}
+.button2r,
+.button3r {
+  border-radius: 9999px;
+  padding: 0 12px;
+}

@@ -1,0 +1,16 @@
+<div class="wrapper">
+    <div class="table_top">
+        <div class="flex">
+            <button class="button3 m">Добавить</button>
+            <button class="button3 m" [disabled]="true">Редактировать</button>
+            <button class="button2 m" [disabled]="true">Удалить</button>
+        </div>
+        <div class="flex">
+            <button class="button3 m" [disabled]="true">Сменить пароль</button>
+            <button class="button2" (click)="userdata.logout()">Выйти</button>
+        </div>
+    </div>
+    <div class="table_cont">
+        <app-simple-table></app-simple-table>
+    </div>
+</div>

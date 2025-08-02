@@ -1,0 +1,16 @@
+<div class="wrapper center">
+  <div class="card">
+    <mat-form-field>
+      <mat-label>Логин</mat-label>
+      <input type="text" matInput [(ngModel)]="login" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Пароль</mat-label>
+      <input type="password" matInput [(ngModel)]="password" />
+    </mat-form-field>
+    <button class="button3" (click)="submit()" [disabled]="!password.length">
+      Далее
+    </button>
+    <button class="button2" (click)="go()">Вход без авторизации</button>
+  </div>
+</div>

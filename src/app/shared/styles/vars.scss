@@ -1,0 +1,15 @@
+$main_color: #6768ab;
+$second_color: #cdcbf0;
+$borr: 7px;
+$button_shadow: 0px 2px 0px 1px rgba(0, 0, 0, 0.2);
+$z8: white;
+$hover_bgc: rgba(150, 150, 150, 0.2);
+@mixin main_bgc {
+    background-color: $main_color;
+}
+@mixin main_c {
+    color: $main_color;
+}
+@mixin second_bgc {
+    background-color: $second_color;
+}

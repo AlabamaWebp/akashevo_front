@@ -1,0 +1,82 @@
+<div class="table_container">
+  @if (tableData.length) {
+    <div class="overflow simple-overflow">
+      <table
+        class="table simple-table"
+        [ngClass]="{
+          left: !icon_columns.includes(data.columns[0]),
+        }"
+      >
+        <thead>
+          <tr>
+            @for (item of data.columns; track item) {
+              <th>
+                <span>
+                  <span
+                    [class.clickable]="sortable_columns.includes(item)"
+                    (click)="sortEv(item)"
+                  >
+                    {{ data.rus_cols[item] }}
+                  </span>
+                  @if (sort.order_by === item) {
+                    <span>
+                      @if (sort.descending) {
+                        <mat-icon class="mat_anim">arrow_upward</mat-icon>
+                      }
+                      @if (!sort.descending) {
+                        <mat-icon class="mat_anim">arrow_downward</mat-icon>
+                      }
+                    </span>
+                  }
+                </span>
+              </th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of tableData; track row; let i = $index) {
+            @if (getCurrentSplitValue(i)) {
+              <tr>
+                <td colspan="1000">
+                  <span class="split_col">{{ getCurrentSplitValue(i) }}</span>
+                </td>
+              </tr>
+            }
+            <tr
+              (click)="selectRow(i)"
+              (dblclick)="selectRow(i, true)"
+              [class.selected_row]="i === data.row_id"
+            >
+              @for (col of data.columns; track col) {
+                <td>
+                  @if (!icon_columns.includes(col)) {
+                    <span>{{ row[col] }}</span>
+                  }
+                  @if (icon_columns.includes(col)) {
+                    <mat-icon>{{ row[col] }}</mat-icon>
+                  }
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (!tableData.length && !is_load) {
+    <div class="butterfly center" style="flex-direction: column">
+      <span>{{ no_data_text }}</span>
+    </div>
+  }
+  <!-- @if (is_load && anim) {
+    <div class="fillAbs megashow" >
+      <ng-container [ngTemplateOutlet]="butterfly"></ng-container>
+    </div>
+  } -->
+</div>
+
+<!-- <ng-template #butterfly>
+  <div class="butterfly center custom" style="flex-direction: column;">
+    <img src="../../../assets/images/butterfly3.gif" />
+  </div>
+</ng-template> -->
