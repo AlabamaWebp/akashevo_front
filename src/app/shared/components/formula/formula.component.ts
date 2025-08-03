@@ -20,8 +20,13 @@ export class FormulaComponent {
   operations: string[] = ["*", "/", "+", "-", "(", ")"];
   dropToFormula(event: CdkDragDrop<string[]>) {
     console.log(event);
+    const item = event.item.element.nativeElement.innerText;
     if (!event.isPointerOverContainer) {
-      
+      if (
+        (event.event.target as HTMLElement).classList.contains("trash") &&
+        item != "="
+      )
+        this.formula.splice(event.previousIndex, 1);
       return;
     }
     if (event.previousContainer === event.container) {
@@ -31,7 +36,6 @@ export class FormulaComponent {
         event.currentIndex
       );
     } else {
-      const item = event.item.element.nativeElement.innerText;
       this.formula.push(item);
       moveItemInArray(
         event.container.data,
@@ -40,18 +44,18 @@ export class FormulaComponent {
       );
     }
   }
-  isOperation(s: string) {
-    return this.operations.includes(s) || s === "=";
-  }
-  sortPredicate(index: number, item: CdkDrag<string>) {
-    console.log(this.formula, item);
-    if (this.formula == undefined) return true;
-    console.log(index, item);
-    if (index == 0) return true;
-    const cur = item.element.nativeElement.innerText; // кто вставляется
-    const pre = this.formula[index - 1]; // элемент перед вставкой
-    console.log(this.isOperation(cur), this.isOperation(pre));
+  // isOperation(s: string) {
+  //   return this.operations.includes(s) || s === "=";
+  // }
+  // sortPredicate(index: number, item: CdkDrag<string>) {
+  //   console.log(this.formula, item);
+  //   if (this.formula == undefined) return true;
+  //   console.log(index, item);
+  //   if (index == 0) return true;
+  //   const cur = item.element.nativeElement.innerText; // кто вставляется
+  //   const pre = this.formula[index - 1]; // элемент перед вставкой
+  //   console.log(this.isOperation(cur), this.isOperation(pre));
 
-    return this.isOperation(cur) !== this.isOperation(pre);
-  }
+  //   return this.isOperation(cur) !== this.isOperation(pre);
+  // }
 }
