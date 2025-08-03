@@ -1,0 +1,43 @@
+<div class="wrapper center">
+  <div
+    cdkDropList
+    [cdkDropListData]="vars"
+    #varsList="cdkDropList"
+    [cdkDropListConnectedTo]="[fList]"
+    class="flex"
+  >
+    @for (item of vars; track $index) {
+    <div class="block" cdkDrag>{{ item }}</div>
+    }
+  </div>
+
+  <!--  -->
+
+  <div
+    class="template"
+    cdkDropListOrientation="horizontal"
+    cdkDropList
+    [cdkDropListData]="formula"
+    (cdkDropListDropped)="dropToFormula($event)"
+    #fList="cdkDropList"
+    >
+    <!-- [cdkDropListSortPredicate]="sortPredicate" -->
+    @for (item of formula; track $index) {
+    <div class="block" cdkDrag>{{ item }}</div>
+    }
+  </div>
+
+  <!--  -->
+
+  <div
+    cdkDropList
+    #oList="cdkDropList"
+    [cdkDropListData]="operations"
+    [cdkDropListConnectedTo]="[fList]"
+    class="flex"
+  >
+    @for (item of operations; track $index) {
+    <div class="block" cdkDrag>{{ item }}</div>
+    }
+  </div>
+</div>
