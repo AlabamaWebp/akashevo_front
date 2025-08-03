@@ -24,3 +24,8 @@ $border: rgb(170, 170, 170);
   border-radius: 5px;
   margin: 5px;
 }
+.trash {
+    $red: red;
+    border-color: $red;
+    color: $red;
+}

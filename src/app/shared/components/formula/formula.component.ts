@@ -5,11 +5,12 @@ import {
   moveItemInArray,
   CdkDragDrop,
 } from "@angular/cdk/drag-drop";
+import { MatIconModule } from "@angular/material/icon";
 
 @Component({
   selector: "app-formula",
   standalone: true,
-  imports: [CdkDrag, CdkDropList],
+  imports: [CdkDrag, CdkDropList, MatIconModule],
   templateUrl: "./formula.component.html",
   styleUrl: "./formula.component.scss",
 })

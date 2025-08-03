@@ -13,18 +13,21 @@
 
   <!--  -->
 
-  <div
-    class="template"
-    cdkDropListOrientation="horizontal"
-    cdkDropList
-    [cdkDropListData]="formula"
-    (cdkDropListDropped)="dropToFormula($event)"
-    #fList="cdkDropList"
+  <div class="flex">
+    <div
+      class="template"
+      cdkDropListOrientation="horizontal"
+      cdkDropList
+      [cdkDropListData]="formula"
+      (cdkDropListDropped)="dropToFormula($event)"
+      #fList="cdkDropList"
     >
-    <!-- [cdkDropListSortPredicate]="sortPredicate" -->
-    @for (item of formula; track $index) {
-    <div class="block" cdkDrag>{{ item }}</div>
-    }
+      <!-- [cdkDropListSortPredicate]="sortPredicate" -->
+      @for (item of formula; track $index) {
+      <div class="block" cdkDrag>{{ item }}</div>
+      }
+    </div>
+    <div class="trash block"><mat-icon>delete</mat-icon></div>
   </div>
 
   <!--  -->
