@@ -1,0 +1,13 @@
+<!-- <div class="backdrop" (click)="close()"> -->
+<!-- <div class="modal"> -->
+<div mat-dialog-content class="warning-text">{{data.text}}</div>
+@if (data.href) {
+  <div><a href="{{data.href}}" mat-dialog-content class="warning-text" target="_blank">{{data.href_text}}</a></div>
+}
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial>Закрыть</button>
+</div>
+<!-- </div> -->
+<!-- </div> -->
+
+

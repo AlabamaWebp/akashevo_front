@@ -1,36 +1,5 @@
 <div class="wrapper center">
-  <!-- [cdkDropListData]="vars" -->
-  <div
-    cdkDropList
-    #varsList="cdkDropList"
-    [cdkDropListConnectedTo]="[fList]"
-    class="list"
-  >
-    <div class="label">Переменные</div>
-    <div class="flex">
-      @for (item of vars; track $index) {
-      <div class="block" cdkDrag>{{ item }}</div>
-      }
-    </div>
-  </div>
-
-  <div
-    cdkDropList
-    #oList="cdkDropList"
-    [cdkDropListData]="operations"
-    [cdkDropListConnectedTo]="[fList]"
-    class="list"
-  >
-    <div class="label">Операции</div>
-    <div class="flex">
-      @for (item of operations; track $index) {
-      <div class="block" cdkDrag>{{ item }}</div>
-      }
-    </div>
-  </div>
-
-  <!--  -->
-
+  {{formula.join("")}}
   <div class="flex">
     <div
       class="template"
@@ -45,6 +14,64 @@
       <div class="block" cdkDrag [cdkDragData]="item">{{ item }}</div>
       }
     </div>
-    <div class="trash block"><mat-icon class="mimo">delete</mat-icon></div>
+    <div class="trash block" style="margin-left: 15px; cursor: no-drop;">
+      <mat-icon class="mimo">delete</mat-icon>
+    </div>
+  </div>
+  <!--  -->
+  <div class="calc">
+    <div class="left">
+      <div class="top">
+        <!-- operations1 -->
+        <div
+          cdkDropList
+          #opList="cdkDropList"
+          [cdkDropListConnectedTo]="[fList]"
+          cdkDropListSortingDisabled
+          class="list"
+        >
+          <div class="flex">
+            <div class="block" style="cursor: pointer;" (click)="clear()">C</div>
+            @for (item of operations2; track $index) {
+            <div class="block" cdkDrag>{{ item }}</div>
+            }
+          </div>
+        </div>
+        <!-- operations1 -->
+      </div>
+      <!-- Переменные -->
+      <!-- #varsList="cdkDropList" -->
+      <div
+        cdkDropList
+        [cdkDropListConnectedTo]="[fList]"
+        cdkDropListSortingDisabled
+        class="list all"
+      >
+        <!-- <div class="label">Переменные</div> -->
+        <div class="flex grid">
+          @for (item of vars; track $index) {
+          <div class="block" cdkDrag>{{ item }}</div>
+          }
+        </div>
+      </div>
+      <!-- Переменные -->
+    </div>
+    <div class="right">
+      <!-- [cdkDropListData]="operations1" -->
+      <div
+        cdkDropList
+        #oList="cdkDropList"
+        [cdkDropListConnectedTo]="[fList]"
+        cdkDropListSortingDisabled
+        class="list"
+      >
+        <!-- <div class="label">Операции</div> -->
+        <div class="flex vert">
+          @for (item of operations1; track $index) {
+          <div class="block" cdkDrag>{{ item }}</div>
+          }
+        </div>
+      </div>
+    </div>
   </div>
 </div>

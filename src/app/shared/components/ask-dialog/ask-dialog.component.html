@@ -1,0 +1,5 @@
+<div mat-dialog-content class="text">{{ data.text }}</div>
+<div mat-dialog-actions>
+  <button class="button3" (click)="close(true)">{{ data.variants ? data.variants.yes : 'Да'}}</button>
+  <button class="button2" (click)="close()">{{ data.variants ? data.variants.no : 'Нет'}}</button>
+</div>

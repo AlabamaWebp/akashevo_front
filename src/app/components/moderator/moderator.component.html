@@ -1,1 +1,50 @@
-<p>moderator works!</p>
+<div class="wrapper">
+  @if (interface == 0) {
+  <div class="header">
+    <div class="button3">Создать модель</div>
+    <div class="button2" (click)="logout()">Выйти</div>
+  </div>
+  <div class="wrapper center font">
+    @for (item of models; track $index) {
+    <div class="button3" (click)="choiceModel(item)">{{ item }}</div>
+    }
+  </div>
+  } @else {
+  <div class="header">
+    <div class=""></div>
+    <h3>{{ header }}</h3>
+    <!-- <div class="button3">Создать модель</div> -->
+    <div class="button2" (click)="goBack()">Назад</div>
+  </div>
+  <div class="wrapper">
+    @switch (interface) {
+    <!--  -->
+    @case (1) {
+    <div class="vars fill">
+      <div class="flex jcsb">
+        <div class="flex">
+          <div class="button3 m">Добавить</div>
+          <button class="button2 m" [disabled]="true">Убрать</button>
+        </div>
+        <div class="left">
+          <div class="button3" (click)="goToFormula()">
+            Переменные готовы...
+          </div>
+        </div>
+      </div>
+      <app-simple-table></app-simple-table>
+      <!-- <div class="var"></div> -->
+    </div>
+    } @case (2) {
+    <div class="vars">
+      <div class="flex center">
+        <div class="button3" (click)="goNext()">Формула готова...</div>
+      </div>
+      <app-formula [vars]="vars_for_formula!" [formula]="formula"></app-formula>
+    </div>
+    }
+    <!--  -->
+    }
+  </div>
+  }
+</div>

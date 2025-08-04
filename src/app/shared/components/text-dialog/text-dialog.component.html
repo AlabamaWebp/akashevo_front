@@ -1,0 +1,10 @@
+<div mat-dialog-content class="text">
+    <mat-form-field style="width: 250px;">
+        <mat-label>{{data.text}}</mat-label>
+        <input type="text" [class.number]="data.number" matInput id="inpDialog" #text>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button class="button3" (click)="close(text.value)">{{ data.variants ? data.variants.yes : 'Готово'}}</button>
+  <button class="button2" (click)="close()">{{ data.variants ? data.variants.no : 'Отмена'}}</button>
+</div>

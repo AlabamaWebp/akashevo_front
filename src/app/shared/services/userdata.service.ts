@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 export class UserDataService {
   constructor(private router: Router) {}
   fio: string = 'Неавторизован';
-  right: number = 3; // 0 - неавторизован 1 - авторизован 2 - moder 3 - admin
+  right: number = 2; // 0 - неавторизован 1 - авторизован 2 - moder 3 - admin
   logout() {
     this.fio = 'Неавторизован';
     // this.right = 0;
