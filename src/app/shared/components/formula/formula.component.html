@@ -1,14 +1,32 @@
 <div class="wrapper center">
+  <!-- [cdkDropListData]="vars" -->
   <div
     cdkDropList
-    [cdkDropListData]="vars"
     #varsList="cdkDropList"
     [cdkDropListConnectedTo]="[fList]"
-    class="flex"
+    class="list"
   >
-    @for (item of vars; track $index) {
-    <div class="block" cdkDrag>{{ item }}</div>
-    }
+    <div class="label">Переменные</div>
+    <div class="flex">
+      @for (item of vars; track $index) {
+      <div class="block" cdkDrag>{{ item }}</div>
+      }
+    </div>
+  </div>
+
+  <div
+    cdkDropList
+    #oList="cdkDropList"
+    [cdkDropListData]="operations"
+    [cdkDropListConnectedTo]="[fList]"
+    class="list"
+  >
+    <div class="label">Операции</div>
+    <div class="flex">
+      @for (item of operations; track $index) {
+      <div class="block" cdkDrag>{{ item }}</div>
+      }
+    </div>
   </div>
 
   <!--  -->
@@ -24,23 +42,9 @@
     >
       <!-- [cdkDropListSortPredicate]="sortPredicate" -->
       @for (item of formula; track $index) {
-      <div class="block" cdkDrag>{{ item }}</div>
+      <div class="block" cdkDrag [cdkDragData]="item">{{ item }}</div>
       }
     </div>
     <div class="trash block"><mat-icon class="mimo">delete</mat-icon></div>
-  </div>
-
-  <!--  -->
-
-  <div
-    cdkDropList
-    #oList="cdkDropList"
-    [cdkDropListData]="operations"
-    [cdkDropListConnectedTo]="[fList]"
-    class="flex"
-  >
-    @for (item of operations; track $index) {
-    <div class="block" cdkDrag>{{ item }}</div>
-    }
   </div>
 </div>

@@ -1,7 +1,7 @@
 $border: rgb(170, 170, 170);
 .template {
   min-width: 50px;
-//   height: 66px;
+  //   height: 66px;
   border-radius: 5px;
   padding: 5px 10px;
   border: 2px solid $border;
@@ -25,7 +25,26 @@ $border: rgb(170, 170, 170);
   margin: 5px;
 }
 .trash {
-    $red: rgb(255, 113, 113);
-    border-color: $red;
-    color: $red;
+  $red: rgb(255, 113, 113);
+  border-color: $red;
+  color: $red;
 }
+.list {
+  border: 2px solid $border;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  .label {
+    font-size: 14px;
+    line-height: 10px;
+  }
+}
+// .cdk-drag-animating {
+//   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+// }
+.cdk-drop-list-dragging, .block:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+// * {
+//     transition: 0.2s ;
+// }

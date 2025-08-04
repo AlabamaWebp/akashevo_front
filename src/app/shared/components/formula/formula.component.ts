@@ -3,6 +3,7 @@ import {
   CdkDrag,
   CdkDropList,
   moveItemInArray,
+  copyArrayItem,
   CdkDragDrop,
 } from "@angular/cdk/drag-drop";
 import { MatIconModule } from "@angular/material/icon";
@@ -18,6 +19,7 @@ export class FormulaComponent {
   @Input() vars: string[] = ["В", "ЧР", "ХЗ"];
   @Input() formula: string[] = ["="];
   operations: string[] = ["*", "/", "+", "-", "(", ")"];
+  ngOnInit() {}
   dropToFormula(event: CdkDragDrop<string[]>) {
     console.log(event);
     const item = event.item.element.nativeElement.innerText;
@@ -36,26 +38,36 @@ export class FormulaComponent {
         event.currentIndex
       );
     } else {
-      this.formula.push(item);
-      moveItemInArray(
-        event.container.data,
-        this.formula.length - 1,
-        event.currentIndex
-      );
+      this.formula.splice(event.currentIndex, 0, item);
+      // copyArrayItem(
+      //   event.previousContainer.data,
+      //   event.container.data,
+      //   event.previousIndex,
+      //   event.currentIndex
+      // );
+      // this.formula.push(item);
+      // moveItemInArray(
+      //   event.container.data,
+      //   this.formula.length - 1,
+      //   event.currentIndex
+      // );
     }
   }
   // isOperation(s: string) {
+  //   if (s == undefined) return undefined;
   //   return this.operations.includes(s) || s === "=";
   // }
-  // sortPredicate(index: number, item: CdkDrag<string>) {
-  //   console.log(this.formula, item);
+  // sortPredicate = (index: number, item: CdkDrag<string>) => {
   //   if (this.formula == undefined) return true;
-  //   console.log(index, item);
   //   if (index == 0) return true;
   //   const cur = item.element.nativeElement.innerText; // кто вставляется
   //   const pre = this.formula[index - 1]; // элемент перед вставкой
-  //   console.log(this.isOperation(cur), this.isOperation(pre));
+  //   const pos = this.formula[index + 1]; // элемент перед вставкой
+  //   // console.log(this.isOperation(cur), this.isOperation(pre));
 
-  //   return this.isOperation(cur) !== this.isOperation(pre);
-  // }
+  //   return (
+  //     this.isOperation(cur) !== this.isOperation(pre) &&
+  //     this.isOperation(cur) !== this.isOperation(pos)
+  //   );
+  // };
 }
