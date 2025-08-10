@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="top_line">
+      <div class="flex">
+          <button class="button3 m" (click)="openCreate()">Добавить</button>
+          <button class="button3 m" [disabled]="data.row_id == -1">Редактировать</button>
+          <button class="button2 m" [disabled]="data.row_id == -1">Удалить</button>
+      </div>
+      <div class="flex">
+          <button class="button3 m" [disabled]="data.row_id == -1" (click)="close()">Выбрать</button>
+          <button class="button2" (click)="close(false)">Закрыть</button>
+      </div>
+  </div>
+  <div class="table_cont">
+      <app-simple-table [data]="data"></app-simple-table>
+  </div>
+</div>

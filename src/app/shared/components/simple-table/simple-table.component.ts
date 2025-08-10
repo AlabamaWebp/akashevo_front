@@ -21,7 +21,7 @@ import { NgClass, NgTemplateOutlet } from '@angular/common';
 export class SimpleTableComponent implements OnChanges {
   @Input() split_by: string = '';
   @Input() data: SimpleTable = new SimpleTable();
-  @Input() no_data_text: string = "Нет данных для отображения";
+  @Input() no_data_text: string = 'Нет данных для отображения';
   @Input() is_load: boolean = false;
   @Input() icon_columns: string[] = [];
   @Input() sortable_columns: string[] = []; // список сортируемых колонок
@@ -31,14 +31,15 @@ export class SimpleTableComponent implements OnChanges {
   @Output() sort_ev = new EventEmitter();
   constructor() {}
   split_index: { [x: number]: string } = {};
-  get tableData(): table_data[] {
-    return typeof this.data.table_data == 'object'
-      ? this.data.table_data
-      : this.data.table_data();
-  }
+  // get tableData(): table_data[] {
+  //   return typeof this.data.table_data == 'object'
+  //     ? this.data.table_data
+  //     : this.data.table_data();
+  // }
+
   findSplitIndexes() {
     this.split_index = {};
-    this.tableData.forEach((d, i) => {
+    this.data.tableData.forEach((d, i) => {
       if (!Object.values(this.split_index).includes(String(d[this.split_by])))
         this.split_index[i] = d[this.split_by] as string;
     });
@@ -81,7 +82,7 @@ export class SimpleTable {
   constructor(
     columns?: string[],
     rus_cols?: rus_cols,
-    table_data?: table_data[] | WritableSignal<any>,
+    table_data?: table_data[] | WritableSignal<any>
   ) {
     this.columns = columns ?? [];
     this.rus_cols = rus_cols ?? {};
@@ -90,7 +91,12 @@ export class SimpleTable {
   }
   columns: string[];
   rus_cols: rus_cols;
-  table_data: table_data[] | WritableSignal<any>;
+  private table_data: table_data[] | WritableSignal<any>;
+  get tableData(): table_data[] {
+    return typeof this.table_data == 'object'
+      ? this.table_data
+      : this.table_data();
+  }
   row_id = -1;
 }
 export class Sort {

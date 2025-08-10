@@ -1,0 +1,42 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex {
+  display: flex;
+}
+.mimo {
+  pointer-events: none;
+}
+.fill {
+  height: 100%;
+  width: 100%;
+}
+.m {
+  margin: 0 10px 10px 0;
+}
+.nom {
+  margin: 0;
+}
+.jcsb {
+  justify-content: space-between;
+}
+.fdc {
+  flex-direction: column;
+}
+.left, .right {
+  display: flex;
+  align-items: center;
+  & > * {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
+.pointer {
+  cursor: pointer;
+}
+.relative {
+  position: relative;
+}

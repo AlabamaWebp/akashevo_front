@@ -1,0 +1,27 @@
+<div class="wrapper" mat-dialog-content>
+  <h3>{{ constructor_data.edit ? "Редактирование переменной" : "Создание переменной" }}</h3>
+  <mat-form-field>
+    <mat-label>Название</mat-label>
+    <input matInput type="text" [(ngModel)]="data.name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Сокращённое название</mat-label>
+    <input matInput type="text" [(ngModel)]="data.shortname"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>В чём измеряется</mat-label>
+    <input matInput type="text" [(ngModel)]="data.metric"/>
+  </mat-form-field>
+
+  <mat-checkbox [(ngModel)]="computed">Вычисляется на основе других переменных</mat-checkbox>
+  @if (computed) {
+    <app-formula></app-formula>
+  }
+
+  <div mat-dialog-actions>
+    <button class="button3 m" [disabled]="disableClose" (click)="createEdit()">Создать</button>
+    <button class="button2 nom" mat-dialog-close>Отмена</button>
+  </div>
+</div>

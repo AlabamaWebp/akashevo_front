@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <div class="header">
+    <div class=""></div>
+    <div class="button2" (click)="user.logout()">Выйти</div>
+  </div>
+  <div class="wrapper center font">
+    <div style="width: 200px;">
+      <div class="button3" (click)="goTo('analyz')">Провести анализ</div>
+      <div class="button3" (click)="goTo('history')">Посмотреть историю</div>
+    </div>
+    <!-- @for (item of models; track $index) {
+    <div class="button3" (click)="choiceModel(item)">{{ item }}</div>
+    } -->
+  </div>
+</div>

@@ -58,7 +58,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     {
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
-      useValue: { hasBackdrop: true, maxHeight: 'unset', maxWidth: 'unset' },
+      useValue: { hasBackdrop: true, maxHeight: '90vh', maxWidth: '90vw' },
     },
     provideMomentDateAdapter(MY_FORMATS),
     { provide: MAT_DATE_LOCALE, useValue: 'ru' },

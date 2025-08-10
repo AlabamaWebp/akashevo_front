@@ -23,7 +23,7 @@
     <div class="vars fill">
       <div class="flex jcsb">
         <div class="flex">
-          <div class="button3 m">Добавить</div>
+          <div class="button3 m" (click)="openVarsComp()">Добавить</div>
           <button class="button2 m" [disabled]="true">Убрать</button>
         </div>
         <div class="left">
@@ -41,6 +41,20 @@
         <div class="button3" (click)="goNext()">Формула готова...</div>
       </div>
       <app-formula [vars]="vars_for_formula!" [formula]="formula"></app-formula>
+    </div>
+    } @case (3) {
+    <div class="fill center fdc">
+      <mat-form-field>
+        <mat-label>{{ header }}</mat-label>
+        <mat-select multiple [value]="cur_analyz">
+          @for (item of analyz; track $index) {
+          <mat-option [value]="item" [disabled]="item.disabled">
+            {{ item.name }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <div class="button3" (click)="saveAndExit()">Сохранить модель</div>
     </div>
     }
     <!--  -->

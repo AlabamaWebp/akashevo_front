@@ -1,0 +1,89 @@
+<div class="wrapper">
+  <div class="header">
+    <div class=""></div>
+    <h3>{{ title[interface] }}</h3>
+    <div class="button2" (click)="goBack()">Назад</div>
+  </div>
+  @switch (interface) { @case (0) {
+  <div class="wrapper center font">
+    @for (item of models; track $index) {
+    <div class="button3" (click)="choiceModel(item)">{{ item }}</div>
+    }
+  </div>
+  } @case (1) {
+  <div class="wrapper">
+    <div class="top_line">
+      <div class="left">
+        <mat-form-field>
+          <mat-label>Тип периода</mat-label>
+          <mat-select [(ngModel)]="type" (selectionChange)="test($event)">
+            <mat-option value="Год">Год</mat-option>
+            <mat-option value="Квартал">Квартал</mat-option>
+            <mat-option value="Месяц">Месяц</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button class="button3" (click)="addPeriod()">Добавить период</button>
+      </div>
+      <div class="right">
+        <button class="button3" (click)="goFillFields()">Далее</button>
+      </div>
+    </div>
+    <div class="periods">
+      @for (item of periods; track $index) {
+      <div class="card">
+        <div class="flex jcsb relative">
+          <span class="">Период {{ $index + 1 }}</span>
+          <div class="close pointer" (click)="delPeriod($index)">
+            <mat-icon>close</mat-icon>
+          </div>
+        </div>
+        <mat-form-field>
+          <mat-label>Год</mat-label>
+          <mat-select [value]="item.year">
+            @for (item of years; track $index) {
+            <mat-option [value]="item">{{ item }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        @if (type !== 'Год') {
+        <mat-form-field>
+          <mat-label>{{ type }}</mat-label>
+          <mat-select [value]="item.dop">
+            @for (item of (type === 'Месяц') ? months : quarters; track $index)
+            {
+            <mat-option [value]="item.id">{{ item.name }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <!--  -->
+        <!-- @if (type === "Месяц") {
+        <mat-form-field>
+          <mat-label>Месяц</mat-label>
+          <mat-select [value]="item.dop">
+            <mat-option value="Год">Год</mat-option>
+          </mat-select>
+        </mat-form-field>
+        } @else {
+        <mat-form-field>
+          <mat-label></mat-label>
+          <mat-select [value]="type">
+            <mat-option value="Год">Год</mat-option>
+            <mat-option value="Квартал">Квартал</mat-option>
+            <mat-option value="Месяц">Месяц</mat-option>
+          </mat-select>
+        </mat-form-field>
+        }  -->
+        }
+      </div>
+      }
+    </div>
+  </div>
+  } @case (2) {
+    <!--  -->
+    @for (item of periods; track $index) {
+      
+    }
+  } 
+}
+</div>
