@@ -3,3 +3,4 @@ package2.json
 .angular
 dist
 package-lock.json
+src/config.yaml

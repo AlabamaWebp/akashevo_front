@@ -6,35 +6,36 @@
         : "Создание переменной"
     }}
   </h3>
-  <mat-form-field>
-    <mat-label>Фамилия</mat-label>
-    <input matInput type="text" [(ngModel)]="data.f" />
-  </mat-form-field>
+  <div class="col">
+    <mat-form-field>
+      <mat-label>Фамилия</mat-label>
+      <input matInput type="text" [(ngModel)]="data.surname" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Имя</mat-label>
-    <input matInput type="text" [(ngModel)]="data.i" />
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Имя</mat-label>
+      <input matInput type="text" [(ngModel)]="data.name" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Отчество</mat-label>
-    <input matInput type="text" [(ngModel)]="data.o" />
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Отчество</mat-label>
+      <input matInput type="text" [(ngModel)]="data.patronymic" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>login</mat-label>
-    <input matInput type="text" [(ngModel)]="data.login" />
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>login</mat-label>
+      <input matInput type="text" [(ngModel)]="data.login" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Права</mat-label>
-    <mat-select [value]="data.rights">
-      @for (item of constructor_data.rights; track $index) {
-        <mat-option [value]="item.id">{{item.name}}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
-
+    <mat-form-field>
+      <mat-label>Права</mat-label>
+      <mat-select [value]="data.role_name">
+        @for (item of constructor_data.rights; track $index) {
+        <mat-option [value]="item.id">{{ item.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
   <div mat-dialog-actions>
     <button class="button3 m" [disabled]="disableClose" (click)="createEdit()">
       Создать

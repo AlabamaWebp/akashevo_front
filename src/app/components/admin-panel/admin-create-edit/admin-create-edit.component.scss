@@ -1,0 +1,11 @@
+.wrapper {
+    overflow: hidden;
+    display: flex;
+    max-height: max-content;
+}
+.col {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 100%;
+}
